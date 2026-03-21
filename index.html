@@ -68,74 +68,29 @@ header {
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid rgba(255,255,255,0.06);
-  padding: 16px 24px;
+  padding: 20px 24px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 8px;
+  gap: 0;
 }
 
 .logo { height: 28px; width: auto; }
 
-.header-phone {
-  display: none;
-  align-items: center;
-  gap: 8px;
-  text-decoration: none;
-  color: var(--text);
-  font-weight: 700;
-  font-size: 0.95rem;
-  transition: color 0.2s;
-}
-.header-phone:hover { color: var(--accent); }
-.header-phone svg { width: 18px; height: 18px; color: var(--accent); }
-
 @media (min-width: 768px) {
-  header { padding: 16px 48px; flex-direction: row; justify-content: space-between; }
-  .logo { height: 32px; }
-  .header-phone { display: flex; }
+  header { padding: 20px 48px; }
+  .logo { height: 36px; }
 }
 
-/* ── Hero ── */
-.hero {
-  position: relative;
-  min-height: 70vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-}
-
-.hero-img {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-}
-
-.hero-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    to top,
-    rgba(10,10,10,1) 0%,
-    rgba(10,10,10,0.7) 40%,
-    rgba(10,10,10,0.2) 100%
-  );
-}
-
-.hero-content {
-  position: relative;
-  z-index: 2;
-  padding: 40px 24px 48px;
-  max-width: 680px;
+/* ── Intro (text + buttons above hero image) ── */
+.intro {
+  background: var(--bg);
   text-align: center;
+  padding: 48px 24px 40px;
 }
 
-.hero-content h1 {
+.intro h1 {
   font-size: 2rem;
   font-weight: 900;
   letter-spacing: -0.03em;
@@ -143,14 +98,21 @@ header {
   margin-bottom: 12px;
 }
 
-.hero-content p {
+.intro p {
   font-size: 1rem;
   color: var(--text-muted);
-  max-width: 480px;
-  margin: 0 auto 24px;
+  max-width: 520px;
+  margin: 0 auto 28px;
 }
 
-.hero-cta {
+.intro-buttons {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn-call {
   display: inline-flex;
   align-items: center;
   gap: 8px;
@@ -164,17 +126,54 @@ header {
   text-decoration: none;
   transition: transform 0.15s, box-shadow 0.2s;
 }
-.hero-cta:hover {
+.btn-call:hover {
   transform: scale(1.03);
   box-shadow: 0 0 30px rgba(248,189,42,0.3);
 }
-.hero-cta svg { width: 20px; height: 20px; }
+.btn-call svg { width: 20px; height: 20px; }
+
+.btn-quote {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  color: var(--text);
+  font-weight: 700;
+  font-size: 1rem;
+  padding: 14px 32px;
+  border: 2px solid rgba(255,255,255,0.15);
+  border-radius: 6px;
+  text-decoration: none;
+  transition: border-color 0.2s, background 0.2s;
+}
+.btn-quote:hover {
+  border-color: rgba(255,255,255,0.3);
+  background: rgba(255,255,255,0.05);
+}
+.btn-quote svg { width: 20px; height: 20px; }
 
 @media (min-width: 768px) {
-  .hero { min-height: 80vh; }
-  .hero-content { padding: 60px 48px 72px; }
-  .hero-content h1 { font-size: 3.25rem; }
-  .hero-content p { font-size: 1.125rem; }
+  .intro { padding: 64px 48px 48px; }
+  .intro h1 { font-size: 3.25rem; }
+  .intro p { font-size: 1.125rem; }
+}
+
+/* ── Hero Image ── */
+.hero {
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-img {
+  width: 100%;
+  height: 50vh;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+@media (min-width: 768px) {
+  .hero-img { height: 60vh; }
 }
 
 /* ── RGB Divider ── */
@@ -186,13 +185,13 @@ header {
 
 /* ── Trust Bar ── */
 .trust-bar {
-  padding: 32px 24px;
+  margin-top: 32px;
+  padding: 0;
   display: flex;
   flex-wrap: wrap;
-  gap: 24px 40px;
+  gap: 16px 32px;
   justify-content: center;
   align-items: center;
-  border-bottom: 1px solid rgba(255,255,255,0.06);
 }
 
 .trust-item {
@@ -211,6 +210,125 @@ header {
 
 @media (min-width: 768px) {
   .trust-bar { padding: 36px 48px; gap: 48px; }
+}
+
+/* ── Products ── */
+.products {
+  padding: 64px 24px;
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+
+.products h2 {
+  font-size: 1.5rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin-bottom: 8px;
+  text-align: center;
+}
+
+.products .subtitle {
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  margin-bottom: 40px;
+}
+
+.products-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.product-card {
+  text-align: center;
+}
+
+.product-card img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: contain;
+  background: #fff;
+  border-radius: 8px;
+  margin-bottom: 12px;
+}
+
+.product-card h3 {
+  font-size: 0.875rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+@media (min-width: 640px) {
+  .products-grid { grid-template-columns: repeat(4, 1fr); }
+}
+
+@media (min-width: 768px) {
+  .products { padding: 80px 48px; }
+  .products h2 { font-size: 2rem; }
+  .product-card h3 { font-size: 1rem; }
+}
+
+/* ── How It Works ── */
+.how-it-works {
+  padding: 64px 24px;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  text-align: center;
+}
+
+.how-it-works h2 {
+  font-size: 1.5rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin-bottom: 40px;
+}
+
+.steps {
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.step-number {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  font-weight: 900;
+  color: #000;
+  flex-shrink: 0;
+}
+
+.step h3 {
+  font-size: 1.1rem;
+  font-weight: 800;
+}
+
+.step p {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  max-width: 280px;
+  line-height: 1.6;
+}
+
+@media (min-width: 768px) {
+  .how-it-works { padding: 80px 48px; }
+  .how-it-works h2 { font-size: 2rem; }
+  .steps { flex-direction: row; gap: 48px; }
+  .step { flex: 1; }
 }
 
 /* ── Projects Grid ── */
@@ -407,24 +525,35 @@ footer {
 <!-- Header -->
 <header>
   <img src="images/logo.svg" alt="LED Outlet" class="logo"/>
-  <a href="tel:4072338888" class="header-phone">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24 11.36 11.36 0 003.58.57 1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1 11.36 11.36 0 00.57 3.58 1 1 0 01-.25 1.01l-2.2 2.2z"/></svg>
-    (407) 233-8888
-  </a>
 </header>
 
-<!-- Hero -->
-<section class="hero">
-  <img src="images/hero-storefront.jpg" alt="LED Outlet storefront at night with blue LED lighting" class="hero-img"/>
-  <div class="hero-overlay"></div>
-  <div class="hero-content">
-    <h1>Commercial LED Lighting in Orlando</h1>
-    <p>Sales, installation, and retrofit for storefronts, parking lots, and commercial properties across Central Florida.</p>
-    <a href="tel:4072338888" class="hero-cta">
+<!-- Intro -->
+<section class="intro">
+  <h1>Commercial Property<br/>Exterior Lighting<br/>Experts</h1>
+  <p>Located in West Orlando, Serving Greater Central Florida</p>
+  <div class="intro-buttons">
+    <a href="tel:4072338888" class="btn-call">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24 11.36 11.36 0 003.58.57 1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1 11.36 11.36 0 00.57 3.58 1 1 0 01-.25 1.01l-2.2 2.2z"/></svg>
-      Call for a Free Quote
+      (407) 233-8888
     </a>
   </div>
+  <div class="trust-bar">
+    <div class="trust-item">
+      <strong>10+ Years</strong> in Business
+    </div>
+    <div class="trust-item">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#f8bd2a" width="16" height="16"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 6.91-1.01z"/></svg>
+      <strong>4.8</strong> on Google
+    </div>
+<div class="trust-item">
+      <strong>Central Florida</strong> Service Area
+    </div>
+  </div>
+</section>
+
+<!-- Hero Image -->
+<section class="hero">
+  <img src="images/hero-storefront.jpg" alt="LED Outlet storefront at night with blue LED lighting" class="hero-img"/>
 </section>
 
 <!-- RGB Divider -->
@@ -434,22 +563,51 @@ footer {
   <span style="background:var(--blue)"></span>
 </div>
 
-<!-- Trust Bar -->
-<div class="trust-bar">
-  <div class="trust-item">
-    <strong>10+ Years</strong> in Business
+<!-- Products -->
+<section class="products">
+  <h2>What We Sell & Install</h2>
+  <p class="subtitle">Commercial-grade LED fixtures for every application</p>
+  <div class="products-grid">
+    <div class="product-card">
+      <img src="images/products/parking-lot-lights.jpg" alt="LED Parking Lot Light" loading="lazy"/>
+      <h3>Parking Lot Lights</h3>
+    </div>
+    <div class="product-card">
+      <img src="images/products/wall-packs.jpg" alt="LED Wall Pack" loading="lazy"/>
+      <h3>Wall Packs</h3>
+    </div>
+    <div class="product-card">
+      <img src="images/products/flood-lights.jpg" alt="LED Flood Light" loading="lazy"/>
+      <h3>Flood Lights</h3>
+    </div>
+    <div class="product-card">
+      <img src="images/products/high-bay.jpg" alt="LED High Bay Light" loading="lazy"/>
+      <h3>High Bays</h3>
+    </div>
   </div>
-  <div class="trust-item">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#f8bd2a" width="16" height="16"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 6.91-1.01z"/></svg>
-    <strong>4.8</strong> on Google
+</section>
+
+<!-- How It Works -->
+<section class="how-it-works">
+  <h2>How It Works</h2>
+  <div class="steps">
+    <div class="step">
+      <div class="step-number" style="background:var(--red)">1</div>
+      <h3>Call Us</h3>
+      <p>Tell us what you need. We'll give you a straight answer and a free estimate on the phone.</p>
+    </div>
+    <div class="step">
+      <div class="step-number" style="background:var(--green)">2</div>
+      <h3>We Show Up</h3>
+      <p>We bring the truck, the lights, and the crew. Same week in most cases.</p>
+    </div>
+    <div class="step">
+      <div class="step-number" style="background:var(--blue)">3</div>
+      <h3>Done</h3>
+      <p>Lights are up, money savings (electricity, maintenance, rebates), brighter and safer property.</p>
+    </div>
   </div>
-  <div class="trust-item">
-    <strong>Licensed</strong> & Insured
-  </div>
-  <div class="trust-item">
-    <strong>Central Florida</strong> Service Area
-  </div>
-</div>
+</section>
 
 <!-- Projects -->
 <section class="projects">
@@ -470,7 +628,7 @@ footer {
     <img src="images/quang.jpg" alt="Quang Nguyen, owner of LED Outlet" class="about-photo"/>
     <div>
       <h2>Quang Nguyen, Owner</h2>
-      <p>LED Outlet has been serving Orlando-area businesses from our shop in The Pines Shopping Center on Kirkman Road since 2014. We sell, install, and retrofit LED lighting for commercial properties — storefronts, parking lots, warehouses, and signage. If it lights up a business, we do it.</p>
+      <p>LED OUTLET has been serving Greater Orlando from our location on 408 &amp; Kirkman Road since 2014. We sell, install, and replace / retrofit LED lighting for commercial properties — storefront, parking lots, warehouses, and signage. We carry supply and own the bucket truck so we may offer the best prices and service speed. Call us now to see how we may help you.</p>
     </div>
   </div>
 </section>
@@ -485,8 +643,12 @@ footer {
         <a href="tel:4072338888">(407) 233-8888</a>
       </div>
       <div class="footer-detail">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+        <a href="mailto:ledoutletusa@gmail.com">ledoutletusa@gmail.com</a>
+      </div>
+      <div class="footer-detail">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 010-5 2.5 2.5 0 010 5z"/></svg>
-        <span>408 N Kirkman Rd, Suite 2<br/>Orlando, FL 32811<br/>The Pines Shopping Center</span>
+        <span><strong style="color:var(--accent)">Appointments Only</strong><br/>408 N Kirkman Rd, Suite 2<br/>Orlando, FL 32811</span>
       </div>
     </div>
     <div class="footer-hours">
