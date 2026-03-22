@@ -3,10 +3,66 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>LED Outlet — Commercial LED Lighting | Orlando, FL</title>
-<meta name="description" content="Commercial LED lighting sales, installation, and retrofit in Orlando and Central Florida. Storefront LEDs, parking lot lights, wall packs, flood lights. Call (407) 233-8888."/>
+<title>LED Outlet — Commercial LED Lighting | Orlando, FL | (407) 233-8888</title>
+<meta name="description" content="Commercial property exterior lighting experts in West Orlando. Parking lot lights, wall packs, flood lights, high bays, storefront LEDs, and signage. Call (407) 233-8888."/>
+
+<!-- Open Graph -->
+<meta property="og:title" content="LED Outlet — Commercial LED Lighting in Orlando"/>
+<meta property="og:description" content="Parking lot lights, wall packs, flood lights, high bays, storefront LEDs, and signage. Serving Greater Central Florida since 2014."/>
+<meta property="og:image" content="https://www.ledoutletusa.com/images/hero-storefront.jpg"/>
+<meta property="og:url" content="https://www.ledoutletusa.com"/>
+<meta property="og:type" content="website"/>
+<meta property="og:locale" content="en_US"/>
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="LED Outlet — Commercial LED Lighting in Orlando"/>
+<meta name="twitter:description" content="Parking lot lights, wall packs, flood lights, high bays, storefront LEDs. Call (407) 233-8888."/>
+<meta name="twitter:image" content="https://www.ledoutletusa.com/images/hero-storefront.jpg"/>
+
+<meta name="robots" content="index, follow"/>
+<link rel="canonical" href="https://www.ledoutletusa.com"/>
 <link rel="icon" type="image/png" href="images/favicon.png"/>
+<link rel="preload" as="image" href="images/hero-storefront.jpg"/>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+
+<!-- Structured Data: Local Business -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ElectricalContractor",
+  "name": "LED Outlet",
+  "image": "https://www.ledoutletusa.com/images/hero-storefront.jpg",
+  "url": "https://www.ledoutletusa.com",
+  "telephone": "+14072338888",
+  "email": "ledoutletusa@gmail.com",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "408 N Kirkman Rd, Suite 2",
+    "addressLocality": "Orlando",
+    "addressRegion": "FL",
+    "postalCode": "32811",
+    "addressCountry": "US"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 28.5383,
+    "longitude": -81.4242
+  },
+  "openingHoursSpecification": [
+    {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Thursday","Friday"], "opens": "09:00", "closes": "17:00"}
+  ],
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.8",
+    "reviewCount": "75"
+  },
+  "areaServed": "Central Florida",
+  "description": "Commercial property exterior lighting experts. Sales, installation, and retrofit of parking lot lights, wall packs, flood lights, high bays, storefront LEDs, and signage.",
+  "foundingDate": "2014",
+  "priceRange": "$$"
+}
+</script>
 <style>
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -261,7 +317,11 @@ header {
 }
 
 @media (min-width: 640px) {
-  .products-grid { grid-template-columns: repeat(4, 1fr); }
+  .products-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media (min-width: 1024px) {
+  .products-grid { grid-template-columns: repeat(6, 1fr); }
 }
 
 @media (min-width: 768px) {
@@ -380,46 +440,36 @@ header {
   .projects-grid { grid-template-columns: 1fr 1fr 1fr; }
 }
 
-/* ── About / Owner ── */
-.about {
+/* ── Final CTA ── */
+.final-cta {
   padding: 64px 24px;
   border-top: 1px solid rgba(255,255,255,0.06);
-}
-
-.about-inner {
-  max-width: 800px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 24px;
   text-align: center;
 }
 
-.about-photo {
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 3px solid var(--surface-2);
-}
-
-.about-inner h2 {
-  font-size: 1.25rem;
-  font-weight: 800;
+.final-cta h2 {
+  font-size: 1.5rem;
+  font-weight: 900;
   letter-spacing: -0.02em;
+  margin-bottom: 12px;
 }
 
-.about-inner p {
+.final-cta p {
   font-size: 0.95rem;
   color: var(--text-muted);
-  max-width: 520px;
+  max-width: 480px;
+  margin: 0 auto 28px;
   line-height: 1.7;
 }
 
+.final-cta .btn-call {
+  font-size: 1.125rem;
+  padding: 16px 40px;
+}
+
 @media (min-width: 768px) {
-  .about { padding: 80px 48px; }
-  .about-photo { width: 140px; height: 140px; flex-shrink: 0; }
+  .final-cta { padding: 80px 48px; }
+  .final-cta h2 { font-size: 2rem; }
 }
 
 /* ── Footer / Contact ── */
@@ -530,7 +580,7 @@ footer {
 <!-- Intro -->
 <section class="intro">
   <h1>Commercial Property<br/>Exterior Lighting<br/>Experts</h1>
-  <p>Located in West Orlando, Serving Greater Central Florida</p>
+  <p>Parking Lot Lights · Wall Packs · Flood Lights · High Bays · Storefront LEDs · Signage</p>
   <div class="intro-buttons">
     <a href="tel:4072338888" class="btn-call">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24 11.36 11.36 0 003.58.57 1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1 11.36 11.36 0 00.57 3.58 1 1 0 01-.25 1.01l-2.2 2.2z"/></svg>
@@ -541,10 +591,10 @@ footer {
     <div class="trust-item">
       <strong>10+ Years</strong> in Business
     </div>
-    <div class="trust-item">
+    <a href="https://search.google.com/local/reviews?placeid=ChIJK0FJQdB754gRcQaINaLoCPo" target="_blank" rel="noopener" class="trust-item" style="text-decoration:none;color:inherit;">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#f8bd2a" width="16" height="16"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 6.91-1.01z"/></svg>
       <strong>4.8</strong> on Google
-    </div>
+    </a>
 <div class="trust-item">
       <strong>Central Florida</strong> Service Area
     </div>
@@ -584,6 +634,14 @@ footer {
       <img src="images/products/high-bay.jpg" alt="LED High Bay Light" loading="lazy"/>
       <h3>High Bays</h3>
     </div>
+    <div class="product-card">
+      <img src="images/products/storefront-leds.jpg" alt="Storefront LED lighting installation" loading="lazy"/>
+      <h3>Storefront LEDs</h3>
+    </div>
+    <div class="product-card">
+      <img src="images/bucket-truck.jpg" alt="LED Outlet bucket truck for sign and lighting work" loading="lazy"/>
+      <h3>Sign Retrofits, Repairs &amp; Disposal</h3>
+    </div>
   </div>
 </section>
 
@@ -616,21 +674,36 @@ footer {
     <img src="images/storefront-white.jpg" alt="LED Outlet storefront with white LED module lighting" loading="lazy"/>
     <img src="images/projects/commercial-building.jpg" alt="Modern commercial building with LED accent lighting along roofline" loading="lazy"/>
     <img src="images/projects/florida-academy.jpg" alt="Florida Academy building with blue and white LED storefront lighting" loading="lazy"/>
-    <img src="images/projects/liquor-store.jpg" alt="Liquor store with warm LED roofline lighting" loading="lazy"/>
-    <img src="images/projects/singhs.jpg" alt="Singh's Liquors with colorful LED accent lighting and palm trees" loading="lazy"/>
-    <img src="images/projects/crab-shack.jpg" alt="Marco's Crab Shack with blue LED storefront lighting at night" loading="lazy"/>
+    <img src="images/projects/bucket-truck-work.jpg" alt="LED Outlet bucket truck doing sign work on commercial building" loading="lazy"/>
+    <img src="images/projects/IMG_2533.jpg" alt="LED Outlet project" loading="lazy"/>
+    <img src="images/projects/IMG_0852.jpg" alt="LED Outlet project" loading="lazy"/>
+    <img src="images/projects/FullSizeRender.jpg" alt="LED Outlet project" loading="lazy"/>
+    <img src="images/projects/IMG_4393.jpg" alt="LED Outlet project" loading="lazy"/>
+    <img src="images/projects/IMG_5327.jpg" alt="LED Outlet project" loading="lazy"/>
+    <img src="images/projects/IMG_2560.jpg" alt="LED Outlet project" loading="lazy"/>
+    <img src="images/projects/IMG_5468.jpg" alt="LED Outlet project" loading="lazy"/>
+    <img src="images/projects/IMG_9395.jpg" alt="LED Outlet project" loading="lazy"/>
+    <img src="images/projects/IMG_9452.jpg" alt="LED Outlet project" loading="lazy"/>
+    <img src="images/projects/IMG_0484.jpg" alt="LED Outlet project" loading="lazy"/>
+    <img src="images/projects/IMG_9800.jpg" alt="LED Outlet project" loading="lazy"/>
+    <img src="images/projects/IMG_8263.jpg" alt="LED Outlet project" loading="lazy"/>
+    <img src="images/projects/IMG_8257.jpg" alt="LED Outlet project" loading="lazy"/>
+    <img src="images/projects/IMG_0660.jpg" alt="LED Outlet project" loading="lazy"/>
+    <img src="images/projects/IMG_0139.jpg" alt="LED Outlet project" loading="lazy"/>
+    <img src="images/projects/IMG_2675.jpg" alt="LED Outlet project" loading="lazy"/>
+    <img src="images/projects/IMG_6533.jpg" alt="LED Outlet project" loading="lazy"/>
+    <img src="images/projects/IMG_2896.jpg" alt="LED Outlet project" loading="lazy"/>
   </div>
 </section>
 
-<!-- About -->
-<section class="about">
-  <div class="about-inner">
-    <img src="images/quang.jpg" alt="Quang Nguyen, owner of LED Outlet" class="about-photo"/>
-    <div>
-      <h2>Quang Nguyen, Owner</h2>
-      <p>LED OUTLET has been serving Greater Orlando from our location on 408 &amp; Kirkman Road since 2014. We sell, install, and replace / retrofit LED lighting for commercial properties — storefront, parking lots, warehouses, and signage. We carry supply and own the bucket truck so we may offer the best prices and service speed. Call us now to see how we may help you.</p>
-    </div>
-  </div>
+<!-- Final CTA -->
+<section class="final-cta">
+  <h2>Ready to Get Started?</h2>
+  <p>We've been serving Greater Orlando since 2014. We carry the supply and own the bucket truck — so you get the best price and fastest service. One call, that's it.</p>
+  <a href="tel:4072338888" class="btn-call">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24 11.36 11.36 0 003.58.57 1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1 11.36 11.36 0 00.57 3.58 1 1 0 01-.25 1.01l-2.2 2.2z"/></svg>
+    (407) 233-8888
+  </a>
 </section>
 
 <!-- Footer -->
@@ -652,7 +725,7 @@ footer {
       </div>
     </div>
     <div class="footer-hours">
-      <h3>Hours</h3>
+      <h3>Hours <span style="font-size:0.75rem;color:var(--accent);font-weight:700;">(Appointments Only)</span></h3>
       <div class="hours-grid">
         <span class="day">Monday</span><span class="time">9 AM – 5 PM</span>
         <span class="day">Tuesday</span><span class="time">9 AM – 5 PM</span>
@@ -669,5 +742,6 @@ footer {
   </div>
 </footer>
 
+<noscript><p style="text-align:center;padding:20px;background:#f8bd2a;color:#000;font-weight:bold;">Call LED Outlet: (407) 233-8888</p></noscript>
 </body>
 </html>

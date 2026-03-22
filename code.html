@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>LED OUTLET | High-End Technical Authority</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "inverse-on-surface": "#263238",
+              "secondary-fixed-dim": "#f8bd2a",
+              "on-tertiary-container": "#979798",
+              "on-secondary-container": "#533c00",
+              "error-container": "#93000a",
+              "tertiary-container": "#1a1a1a",
+              "surface": "#000000",
+              "on-surface-variant": "#a1a1aa",
+              "tertiary-fixed": "#e2e2e2",
+              "primary": "#ffffff",
+              "surface-bright": "#111111",
+              "on-secondary-fixed": "#261a00",
+              "on-error-container": "#ffdad6",
+              "on-primary-fixed-variant": "#343d96",
+              "surface-container-highest": "#1a1a1a",
+              "surface-tint": "#ffffff",
+              "on-tertiary-fixed": "#1a1c1c",
+              "surface-container-high": "#0d0d0d",
+              "surface-container-lowest": "#000000",
+              "outline-variant": "#27272a",
+              "on-error": "#690005",
+              "surface-container-low": "#050505",
+              "primary-container": "#27272a",
+              "on-primary": "#000000",
+              "on-tertiary-fixed-variant": "#454747",
+              "tertiary-fixed-dim": "#c6c6c6",
+              "on-primary-container": "#ffffff",
+              "on-surface": "#fafafa",
+              "on-tertiary": "#2f3131",
+              "background": "#000000",
+              "primary-fixed-dim": "#ffffff",
+              "inverse-surface": "#fafafa",
+              "on-secondary": "#000000",
+              "on-primary-fixed": "#000000",
+              "tertiary": "#c6c6c6",
+              "on-background": "#fafafa",
+              "secondary-container": "#f8bd2a",
+              "secondary-fixed": "#ffdfa0",
+              "surface-dim": "#000000",
+              "inverse-primary": "#4c56af",
+              "surface-variant": "#1a1a1a",
+              "primary-fixed": "#ffffff",
+              "outline": "#52525b",
+              "surface-container": "#080808",
+              "on-secondary-fixed-variant": "#5c4300",
+              "secondary": "#f8bd2a",
+              "error": "#ffb4ab",
+              "rgb-red": "#FF0000",
+              "rgb-green": "#00FF00",
+              "rgb-blue": "#0000FF"
+            },
+            fontFamily: {
+              "headline": ["Manrope"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        .glass-panel {
+            background: rgba(10, 10, 10, 0.7);
+            backdrop-filter: blur(20px);
+        }
+        .rgb-bars-e {
+            display: inline-flex;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 0.7em;
+            height: 0.8em;
+            vertical-align: middle;
+            margin-bottom: 0.15em;
+            gap: 2px;
+        }
+        .rgb-bar {
+            width: 100%;
+            height: 28%;
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body selection:bg-secondary selection:text-on-secondary">
+<!-- TopNavBar Implementation -->
+<nav class="fixed top-0 z-50 w-full bg-[#000000] border-b border-outline-variant/30 flex justify-between items-center px-8 py-6 max-w-none">
+<div class="text-2xl font-extrabold tracking-tighter text-on-surface flex items-center gap-1 font-sans uppercase">
+<span class="tracking-tight">L</span><span class="rgb-bars-e mx-0.5">
+<span class="rgb-bar bg-[#FF0000]"></span>
+<span class="rgb-bar bg-[#00FF00]"></span>
+<span class="rgb-bar bg-[#0000FF]"></span>
+</span><span class="tracking-tight">D</span> <span class="tracking-tight">OUTL</span><span class="rgb-bars-e mx-0.5">
+<span class="rgb-bar bg-[#FF0000]"></span>
+<span class="rgb-bar bg-[#00FF00]"></span>
+<span class="rgb-bar bg-[#0000FF]"></span>
+</span><span class="tracking-tight">T</span>
+</div>
+<div class="hidden md:flex gap-8 items-center font-headline font-bold tracking-tight">
+<a class="text-on-surface/70 hover:text-rgb-green transition-colors" href="#">Parking Lot</a>
+<a class="text-on-surface/70 hover:text-rgb-blue transition-colors" href="#">Wall Packs</a>
+<a class="text-on-surface/70 hover:text-rgb-red transition-colors" href="#">Flood Lights</a>
+<a class="text-on-surface/70 hover:text-on-surface transition-colors" href="#">Services</a>
+</div>
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-on-surface/70 p-2 hover:bg-surface-container-high hover:text-rgb-green transition-all duration-300 rounded-lg">
+            mail
+        </button>
+<button class="bg-secondary text-on-secondary px-6 py-2 rounded-md font-bold text-sm tracking-wide hover:shadow-[0_0_15px_rgba(248,189,42,0.4)] transition-all scale-95 active:scale-90">
+            Call Us
+        </button>
+</div>
+</nav>
+<main class="pt-24">
+<!-- Action Bar: Prominent Call/Email Buttons -->
+<section class="bg-surface py-8 border-b border-outline-variant/20">
+<div class="container mx-auto px-8 flex flex-col md:flex-row gap-4 justify-center items-center">
+<button class="group flex items-center justify-center gap-3 bg-secondary text-on-secondary px-10 py-5 rounded-md font-bold text-lg hover:shadow-[0_0_25px_rgba(248,189,42,0.4)] transition-all min-w-[200px]">
+                    Call Us
+                    <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">phone_in_talk</span>
+</button>
+<button class="flex items-center justify-center gap-3 bg-transparent border border-outline-variant text-on-surface px-10 py-5 rounded-md font-bold text-lg hover:bg-surface-container-high transition-all min-w-[200px]">
+                    Email Us
+                    <span class="material-symbols-outlined">alternate_email</span>
+</button>
+</div>
+</section>
+<!-- Hero Section: The Architectural Beam -->
+<section class="relative min-h-[75vh] flex items-center overflow-hidden px-8 md:px-24">
+<div class="absolute inset-0 z-0">
+<div class="absolute inset-0 bg-gradient-to-r from-black via-black/70 to-transparent z-10"></div>
+<img alt="Bucket lift truck servicing commercial lights" class="w-full h-full object-cover grayscale opacity-60" data-alt="Bucket lift truck working on parking lot lights at dusk" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAeWNSYpCizOGoZ2kqTC-m0uzhUpW93NSP2RtLu039B5VVW2fkRalbTwUKtWHxurRv9i9bJpKgNbWZtMGggGA_Ebd6rn5XpCVot3edKoUNSUj-c6dBDHagTUieyWLyHClO-qaRmZVK99VuEpA4SsRCC_xuKolHSHoHnQT8cVMSGyJrhx-QSjD1Xwo-ZliWc75pA2R7Csjub1UxY-NGpC8nGG1pBA8ej9U_82VPWFAJIwkn1K2Qx32BdnHyTQM_k2upSvMLVlQkmNCeH"/>
+</div>
+<div class="relative z-20 max-w-4xl mx-auto w-full text-center">
+<div class="flex gap-1 mb-6 justify-center">
+<span class="h-1 w-8 bg-rgb-red"></span>
+<span class="h-1 w-8 bg-rgb-green"></span>
+<span class="h-1 w-8 bg-rgb-blue"></span>
+</div>
+<span class="py-1 px-3 bg-white/5 text-on-surface-variant text-xs font-bold tracking-widest uppercase mb-6 rounded border border-white/10">
+                Technical Authority in Exterior Illumination
+            </span>
+<h1 class="text-6xl md:text-8xl font-extrabold font-headline leading-[0.9] tracking-tighter text-on-surface mb-8 text-center mx-auto">LOCATED IN <span class="text-secondary">WEST ORLANDO</span> <br/>&amp;<br/> SERVING <span class="text-secondary uppercase">Central Florida</span></h1>
+</div>
+</section>
+<!-- Services Grid Section -->
+<section class="py-32 px-8 md:px-24 bg-surface">
+<div class="mb-16">
+<h2 class="text-4xl md:text-5xl font-extrabold font-headline tracking-tighter text-on-surface mb-4 text-center">SERVICES AND BENEFITS</h2>
+<div class="flex gap-1 justify-center">
+<span class="h-1 w-8 bg-rgb-red"></span>
+<span class="h-1 w-8 bg-rgb-green"></span>
+<span class="h-1 w-8 bg-rgb-blue"></span>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<!-- 1. Parking Lot Lighting -->
+<div class="group">
+<div class="aspect-video overflow-hidden bg-surface-container-high border border-outline-variant/30 mb-4 transition-all group-hover:border-rgb-green/50">
+<img alt="Parking Lot Lighting" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD3xBn9ah09nZo3zhyLhzglQfG3tBPicRRq65Bb-9VcjafPWpZTkZrK1XSOSokMmg77jsksRcSjA7cVsD428Q8182GrXcJaaC8S4RXCiMKXKSRKmxj1b5EKzue4fRO6JZeyLLmx5Ix_px-XSJ_SiQ273KYu57Wvpm98OaJw4vbHgKxtHDoUWLCEQmd7WXIWw38NngtsvPjFImnJDFelavkHYt37WK2CNmZp4PTpe5GLyKlPOHl6UkWMgSpx3WjbJffWCy3G5ziTcQ-4"/>
+</div>
+<h3 class="text-xl font-bold font-headline text-on-surface tracking-tight">Parking Lot Lighting</h3>
+<p class="text-on-surface-variant text-sm mt-1">High-mast LED installations and maintenance.</p>
+</div>
+<!-- 2. Wall Packs -->
+<div class="group">
+<div class="aspect-video overflow-hidden bg-surface-container-high border border-outline-variant/30 mb-4 transition-all group-hover:border-rgb-blue/50">
+<img alt="Wall Packs" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC6acujGAPAZ-7KPlV0lGMRJj2dKjl7PFpRx8dRcVd2typF8_uhexETlAsM6NiQwX6oGNMR8IGfgzv9SoVmYrEjlviaB_obSi_5E_dIBmW2IWNKNes1askOAodC6vEhbtyZgpZEp5KxMcy43fb2GPLusrYZok35VnWXpEbGfcmgsP0j0MGClFsXtgBwhPbGlPuIthivD-TwuGddTU54CXQ30CGps8N3Gnc7dKuVEX4B7U2WNU2Hp7MFNz9Bf0oCjsdTp1EW9azgi_mk"/>
+</div>
+<h3 class="text-xl font-bold font-headline text-on-surface tracking-tight">Wall Packs</h3>
+<p class="text-on-surface-variant text-sm mt-1">Durable perimeter lighting for facility safety.</p>
+</div>
+<!-- 3. Flood Lights -->
+<div class="group">
+<div class="aspect-video overflow-hidden bg-surface-container-high border border-outline-variant/30 mb-4 transition-all group-hover:border-rgb-red/50">
+<img alt="Flood Lights" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDTUIsm6-v6vC3a6_9BfU1p3SIs9R36Qy7G8_0-jMreR5A9i7DqXz47vR9z_O8-1rI0T5E4M5J8Y3S6M5S8T5E4M5J8Y3S6M5S8"/>
+</div>
+<h3 class="text-xl font-bold font-headline text-on-surface tracking-tight">Flood Lights</h3>
+<p class="text-on-surface-variant text-sm mt-1">Powerful illumination for large open spaces.</p>
+</div>
+<!-- 4. Architectural Linear Lighting -->
+<div class="group">
+<div class="aspect-video overflow-hidden bg-surface-container-high border border-outline-variant/30 mb-4 transition-all group-hover:border-secondary/50">
+<img alt="Architectural Linear Lighting" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCnGZ_8q_P4_pL_P4_pL_P4_pL_P4_pL_P4_pL_P4_pL_P4_pL_P4_pL_P4_pL_P4_pL_P4_pL"/>
+</div>
+<h3 class="text-xl font-bold font-headline text-on-surface tracking-tight">Architectural Linear Lighting</h3>
+<p class="text-on-surface-variant text-sm mt-1">Design-driven accents for modern structures.</p>
+</div>
+<!-- 5. Signage LED Retrofit -->
+<div class="group">
+<div class="aspect-video overflow-hidden bg-surface-container-high border border-outline-variant/30 mb-4 transition-all group-hover:border-rgb-green/50">
+<img alt="Signage LED Retrofit" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDN-3k_m_6_P4_pL_P4_pL_P4_pL_P4_pL_P4_pL_P4_pL_P4_pL_P4_pL_P4_pL_P4_pL"/>
+</div>
+<h3 class="text-xl font-bold font-headline text-on-surface tracking-tight">Signage LED Retrofit</h3>
+<p class="text-on-surface-variant text-sm mt-1">Modernize your brand visibility with efficiency.</p>
+</div>
+<!-- 6. Energy Rebate & Security -->
+<div class="group">
+<div class="aspect-video overflow-hidden bg-surface-container-high border border-outline-variant/30 mb-4 transition-all group-hover:border-rgb-blue/50">
+<img alt="Energy Rebate &amp; Security" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDhS_8p_L4_pL_P4_pL_P4_pL_P4_pL_P4_pL_P4_pL_P4_pL_P4_pL_P4_pL_P4_pL"/>
+</div>
+<h3 class="text-xl font-bold font-headline text-on-surface tracking-tight">Energy Rebate &amp; Security</h3>
+<p class="text-on-surface-variant text-sm mt-1">Fully insured solutions &amp; rebate procurement assistance.</p>
+</div>
+</div>
+</section>
+<!-- CTA Focus Section -->
+<section class="py-24 px-8 md:px-24 bg-surface">
+<div class="glass-panel rounded-xl p-12 md:p-20 flex flex-col md:flex-row items-center justify-between gap-12 border border-outline-variant/20 relative overflow-hidden">
+<div class="absolute top-0 left-0 w-full h-1 flex">
+<div class="flex-1 bg-rgb-red"></div>
+<div class="flex-1 bg-rgb-green"></div>
+<div class="flex-1 bg-rgb-blue"></div>
+</div>
+<div class="max-w-xl">
+<h2 class="text-4xl md:text-5xl font-extrabold font-headline tracking-tight mb-6">
+                    Ready to illuminate your project?
+                </h2>
+<p class="text-on-surface-variant text-lg">
+                    Get a technical assessment and a transparent quote for your commercial property today. 
+                </p>
+</div>
+<div class="flex flex-col gap-4 w-full md:w-auto">
+<button class="bg-secondary text-on-secondary px-12 py-5 rounded-md font-bold text-xl hover:scale-105 hover:shadow-[0_0_30px_rgba(248,189,42,0.5)] transition-all">
+                    Request a Quote
+                </button>
+<p class="text-center text-xs text-on-surface-variant font-bold tracking-widest uppercase">
+                    Response within 24 hours
+                </p>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer Implementation -->
+<footer class="w-full bg-surface border-t border-outline-variant/20">
+<div class="px-8 md:px-24 py-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 border-b border-outline-variant/10">
+<div class="flex flex-col gap-6">
+<div class="text-2xl font-extrabold tracking-tighter text-on-surface flex items-center gap-1 font-sans uppercase">
+<span class="tracking-tight">L</span><span class="rgb-bars-e mx-0.5">
+<span class="rgb-bar bg-[#FF0000]"></span>
+<span class="rgb-bar bg-[#00FF00]"></span>
+<span class="rgb-bar bg-[#0000FF]"></span>
+</span><span class="tracking-tight">D</span> <span class="tracking-tight">OUTL</span><span class="rgb-bars-e mx-0.5">
+<span class="rgb-bar bg-[#FF0000]"></span>
+<span class="rgb-bar bg-[#00FF00]"></span>
+<span class="rgb-bar bg-[#0000FF]"></span>
+</span><span class="tracking-tight">T</span>
+</div>
+<p class="text-on-surface-variant text-sm leading-relaxed max-w-xs">
+                Small business‧Lighting store in Orlo Vista, Florida. Technical authority in exterior illumination systems.
+            </p>
+<div class="flex items-center gap-2">
+<div class="flex text-secondary">
+<span class="material-symbols-outlined text-sm">star</span>
+<span class="material-symbols-outlined text-sm">star</span>
+<span class="material-symbols-outlined text-sm">star</span>
+<span class="material-symbols-outlined text-sm">star</span>
+<span class="material-symbols-outlined text-sm">star_half</span>
+</div>
+<span class="text-xs font-bold text-on-surface">4.8</span>
+<span class="text-xs text-on-surface-variant">75 Google reviews</span>
+</div>
+</div>
+<div class="flex flex-col gap-4">
+<h4 class="text-xs font-black uppercase tracking-[0.2em] text-on-surface/50 mb-2">Location &amp; Contact</h4>
+<div class="flex gap-3">
+<span class="material-symbols-outlined text-rgb-blue text-lg">location_on</span>
+<p class="text-sm text-on-surface-variant leading-tight">
+                    408 N Kirkman Rd SUITE 2,<br/>Orlando, FL 32811
+                </p>
+</div>
+<div class="flex gap-3 items-center">
+<span class="material-symbols-outlined text-rgb-green text-lg">call</span>
+<a class="text-sm font-bold text-on-surface hover:text-secondary transition-colors" href="tel:4072338888">(407) 233-8888</a>
+</div>
+</div>
+<div class="flex flex-col gap-4">
+<h4 class="text-xs font-black uppercase tracking-[0.2em] text-on-surface/50 mb-2">Operation Hours</h4>
+<div class="grid grid-cols-2 gap-y-2 text-xs font-medium">
+<span class="text-on-surface-variant">Mon - Tue:</span>
+<span class="text-on-surface text-right">9 AM - 5 PM</span>
+<span class="text-on-surface-variant">Wed:</span>
+<span class="text-rgb-red text-right">Closed</span>
+<span class="text-on-surface-variant">Thu - Fri:</span>
+<span class="text-on-surface text-right">9 AM - 5 PM</span>
+<span class="text-on-surface-variant">Sat - Sun:</span>
+<span class="text-rgb-red text-right">Closed</span>
+</div>
+</div>
+<div class="flex flex-col gap-4">
+<h4 class="text-xs font-black uppercase tracking-[0.2em] text-on-surface/50 mb-2">Quick Links</h4>
+<nav class="flex flex-col gap-3">
+<a class="text-xs font-bold uppercase tracking-widest text-on-surface-variant hover:text-rgb-blue transition-colors" href="#">Parking Lot Lighting</a>
+<a class="text-xs font-bold uppercase tracking-widest text-on-surface-variant hover:text-rgb-green transition-colors" href="#">Wall Pack Solutions</a>
+<a class="text-xs font-bold uppercase tracking-widest text-on-surface-variant hover:text-rgb-red transition-colors" href="#">Technical Maintenance</a>
+<a class="text-xs font-bold uppercase tracking-widest text-secondary hover:text-on-surface transition-colors" href="#">Service Request</a>
+</nav>
+</div>
+</div>
+<div class="px-8 md:px-24 py-8 flex flex-col md:flex-row justify-between items-center gap-6">
+<p class="text-on-surface/40 font-['Inter'] text-[10px] font-bold uppercase tracking-[0.25em]">
+            © 2024 LED OUTLET. HIGH-END TECHNICAL AUTHORITY.
+        </p>
+<div class="flex gap-8 font-['Inter'] text-[10px] font-bold uppercase tracking-widest">
+<a class="text-on-surface/50 hover:text-on-surface transition-colors" href="#">Privacy Policy</a>
+<a class="text-on-surface/50 hover:text-on-surface transition-colors" href="#">Terms of Service</a>
+<a class="text-on-surface/50 hover:text-on-surface transition-colors" href="#">Technical Guides</a>
+</div>
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-on-surface/30 hover:text-rgb-green cursor-pointer transition-colors">share</span>
+<span class="material-symbols-outlined text-on-surface/30 hover:text-rgb-blue cursor-pointer transition-colors">map</span>
+</div>
+</div>
+</footer>
+</body></html>
