@@ -316,6 +316,16 @@ header {
   letter-spacing: -0.01em;
 }
 
+a.product-card {
+  text-decoration: none;
+  color: inherit;
+}
+
+a.product-card:hover img {
+  opacity: 0.85;
+  transition: opacity 0.2s;
+}
+
 @media (min-width: 640px) {
   .products-grid { grid-template-columns: repeat(3, 1fr); }
 }
@@ -438,6 +448,61 @@ header {
 
 @media (min-width: 1024px) {
   .projects-grid { grid-template-columns: 1fr 1fr 1fr; }
+}
+
+/* ── Why Us ── */
+.why-us {
+  padding: 64px 24px;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  text-align: center;
+}
+
+.why-us h2 {
+  font-size: 1.5rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin-bottom: 40px;
+}
+
+.why-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 28px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.why-item {
+  text-align: center;
+}
+
+.why-item strong {
+  display: block;
+  font-size: 1.05rem;
+  font-weight: 800;
+  margin-bottom: 6px;
+  color: var(--accent);
+}
+
+.why-item p {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+  max-width: 320px;
+  margin: 0 auto;
+}
+
+@media (min-width: 640px) {
+  .why-grid { grid-template-columns: 1fr 1fr; gap: 36px; }
+}
+
+@media (min-width: 768px) {
+  .why-us { padding: 80px 48px; }
+  .why-us h2 { font-size: 2rem; }
+}
+
+@media (min-width: 1024px) {
+  .why-grid { grid-template-columns: repeat(4, 1fr); }
 }
 
 /* ── Final CTA ── */
@@ -618,30 +683,30 @@ footer {
   <h2>What We Sell & Install</h2>
   <p class="subtitle">Commercial-grade LED fixtures for every application</p>
   <div class="products-grid">
-    <div class="product-card">
+    <a href="parking-lot-lights.html" class="product-card">
       <img src="images/products/parking-lot-lights.jpg" alt="LED Parking Lot Light" loading="lazy"/>
       <h3>Parking Lot Lights</h3>
-    </div>
-    <div class="product-card">
+    </a>
+    <a href="wall-packs.html" class="product-card">
       <img src="images/products/wall-packs.jpg" alt="LED Wall Pack" loading="lazy"/>
       <h3>Wall Packs</h3>
-    </div>
-    <div class="product-card">
+    </a>
+    <a href="flood-lights.html" class="product-card">
       <img src="images/products/flood-lights.jpg" alt="LED Flood Light" loading="lazy"/>
       <h3>Flood Lights</h3>
-    </div>
-    <div class="product-card">
+    </a>
+    <a href="high-bays.html" class="product-card">
       <img src="images/products/high-bay.jpg" alt="LED High Bay Light" loading="lazy"/>
       <h3>High Bays</h3>
-    </div>
-    <div class="product-card">
+    </a>
+    <a href="storefront-leds.html" class="product-card">
       <img src="images/products/storefront-leds.jpg" alt="Storefront LED lighting installation" loading="lazy"/>
       <h3>Storefront LEDs</h3>
-    </div>
-    <div class="product-card">
+    </a>
+    <a href="sign-services.html" class="product-card">
       <img src="images/bucket-truck.jpg" alt="LED Outlet bucket truck for sign and lighting work" loading="lazy"/>
       <h3>Sign Retrofits, Repairs &amp; Disposal</h3>
-    </div>
+    </a>
   </div>
 </section>
 
@@ -693,6 +758,29 @@ footer {
     <img src="images/projects/IMG_2675.jpg" alt="LED Outlet project" loading="lazy"/>
     <img src="images/projects/IMG_6533.jpg" alt="LED Outlet project" loading="lazy"/>
     <img src="images/projects/IMG_2896.jpg" alt="LED Outlet project" loading="lazy"/>
+  </div>
+</section>
+
+<!-- Why LED Outlet -->
+<section class="why-us">
+  <h2>Why LED Outlet</h2>
+  <div class="why-grid">
+    <div class="why-item">
+      <strong>Local to Orlando</strong>
+      <p>We're based right here on Kirkman Road. Your neighbors, your businesses, your community. We've been here since 2014.</p>
+    </div>
+    <div class="why-item">
+      <strong>We Carry the Supply</strong>
+      <p>Fixtures are in stock, not on backorder. No waiting weeks for parts to ship from somewhere else.</p>
+    </div>
+    <div class="why-item">
+      <strong>We Own the Bucket Truck</strong>
+      <p>No renting cranes or hiring lift companies. Our truck, our crew. That keeps your cost down and the job moving fast.</p>
+    </div>
+    <div class="why-item">
+      <strong>One Call, One Crew</strong>
+      <p>We sell the lights, we install the lights, we service the lights. No middlemen, no subcontractors, no runaround.</p>
+    </div>
   </div>
 </section>
 
