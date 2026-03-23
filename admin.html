@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>LED Outlet — Photo Manager</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',system-ui,sans-serif;background:#0a0a0a;color:#f5f5f5;padding:24px}
+h1{font-size:1.5rem;font-weight:800;margin-bottom:8px}
+.subtitle{color:#999;margin-bottom:24px;font-size:0.9rem}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;margin-bottom:32px}
+.card{position:relative;border-radius:8px;overflow:hidden;cursor:pointer;border:3px solid transparent;transition:all .2s}
+.card.disabled{opacity:0.3;border-color:#ff4444}
+.card.enabled{border-color:#39B54A}
+.card img{width:100%;height:160px;object-fit:cover;display:block}
+.card .label{position:absolute;bottom:0;left:0;right:0;background:rgba(0,0,0,0.8);padding:6px 8px;font-size:0.7rem;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.card .badge{position:absolute;top:8px;right:8px;padding:2px 8px;border-radius:4px;font-size:0.65rem;font-weight:800;text-transform:uppercase}
+.card.enabled .badge{background:#39B54A;color:#000}
+.card.disabled .badge{background:#ff4444;color:#fff}
+.actions{display:flex;gap:12px;margin-bottom:24px;flex-wrap:wrap}
+button{background:#f8bd2a;color:#000;font-weight:800;font-size:0.9rem;padding:12px 24px;border:none;border-radius:6px;cursor:pointer;transition:transform .15s}
+button:hover{transform:scale(1.03)}
+button.secondary{background:#222;color:#f5f5f5}
+.output{background:#111;border-radius:8px;padding:16px;font-family:monospace;font-size:0.75rem;color:#39B54A;white-space:pre-wrap;max-height:300px;overflow:auto;display:none;margin-top:16px}
+.count{color:#f8bd2a;font-weight:700}
+</style>
+</head>
+<body>
+<h1>Photo Manager</h1>
+<p class="subtitle">Click photos to toggle them on/off. Then click "Generate" to get the updated HTML. <span class="count" id="count"></span></p>
+
+<div class="actions">
+  <button onclick="generate()">Generate Updated HTML</button>
+  <button class="secondary" onclick="copyOutput()">Copy to Clipboard</button>
+</div>
+
+<div class="grid" id="grid"></div>
+<div class="output" id="output"></div>
+
+<script>
+// All project photos currently in the gallery
+const photos = [
+  { src: "images/storefront-white.jpg", alt: "LED Outlet storefront with white LED module lighting", enabled: true },
+  { src: "images/projects/commercial-building.jpg", alt: "Modern commercial building with LED accent lighting along roofline", enabled: true },
+  { src: "images/projects/florida-academy.jpg", alt: "Florida Academy building with blue and white LED storefront lighting", enabled: true },
+  { src: "images/projects/bucket-truck-work.jpg", alt: "LED Outlet bucket truck doing sign work on commercial building", enabled: true },
+  { src: "images/projects/IMG_2533.jpg", alt: "Commercial LED lighting installation Orlando", enabled: true },
+  { src: "images/projects/IMG_0852.jpg", alt: "LED sign work with bucket truck Orlando", enabled: true },
+  { src: "images/projects/IMG_4393.jpg", alt: "Exterior LED lighting installation Central Florida", enabled: true },
+  { src: "images/projects/IMG_2560.jpg", alt: "Commercial storefront LED retrofit Orlando", enabled: true },
+  { src: "images/projects/IMG_5468.jpg", alt: "LED wall pack installation on commercial building", enabled: true },
+  { src: "images/projects/IMG_9395.jpg", alt: "Parking lot LED lighting upgrade Orlando", enabled: true },
+  { src: "images/projects/IMG_9452.jpg", alt: "Commercial property LED flood light installation", enabled: true },
+  { src: "images/projects/IMG_0484.jpg", alt: "LED Outlet sign repair with bucket truck", enabled: true },
+  { src: "images/projects/IMG_8263.jpg", alt: "Storefront LED module installation Orlando", enabled: true },
+  { src: "images/projects/IMG_8257.jpg", alt: "Commercial building exterior LED lighting", enabled: true },
+  { src: "images/projects/IMG_0660.jpg", alt: "LED parking lot light retrofit Central Florida", enabled: true },
+  { src: "images/projects/IMG_2675.jpg", alt: "Business LED lighting installation Orlando", enabled: true },
+  { src: "images/projects/IMG_6533.jpg", alt: "Commercial LED storefront lighting project", enabled: true },
+  { src: "images/projects/IMG_2896.jpg", alt: "LED sign retrofit and repair Orlando", enabled: true },
+];
+
+function render() {
+  const grid = document.getElementById('grid');
+  const enabledCount = photos.filter(p => p.enabled).length;
+  document.getElementById('count').textContent = `${enabledCount} of ${photos.length} photos enabled`;
+
+  grid.innerHTML = photos.map((p, i) => `
+    <div class="card ${p.enabled ? 'enabled' : 'disabled'}" onclick="toggle(${i})">
+      <img src="${p.src}" alt="${p.alt}"/>
+      <div class="badge">${p.enabled ? 'ON' : 'OFF'}</div>
+      <div class="label">${p.src.split('/').pop()}</div>
+    </div>
+  `).join('');
+}
+
+function toggle(i) {
+  photos[i].enabled = !photos[i].enabled;
+  render();
+}
+
+function generate() {
+  const html = photos
+    .filter(p => p.enabled)
+    .map(p => `    <img src="${p.src}" alt="${p.alt}" loading="lazy"/>`)
+    .join('\n');
+
+  const output = document.getElementById('output');
+  output.style.display = 'block';
+  output.textContent = html;
+}
+
+function copyOutput() {
+  const output = document.getElementById('output');
+  if (output.textContent) {
+    navigator.clipboard.writeText(output.textContent);
+    alert('Copied! Paste this into the projects-grid section of index.html');
+  }
+}
+
+render();
+</script>
+</body>
+</html>
