@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Get a Quote — LED Outlet</title>
+<link rel="icon" type="image/png" href="https://www.ledoutletusa.com/images/favicon.png"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#0a0a0a;--surface:#141414;--surface-2:#1a1a1a;--text:#f5f5f5;--text-muted:#999;--accent:#f8bd2a;--red:#ED1C24;--green:#39B54A;--blue:#4D63FF}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.5;-webkit-font-smoothing:antialiased;min-height:100vh;display:flex;flex-direction:column;align-items:center}
+
+header{width:100%;padding:20px 24px;display:flex;justify-content:center;border-bottom:1px solid rgba(255,255,255,0.06)}
+.logo{height:28px;width:auto}
+
+.rgb-line{display:flex;height:3px;width:100%}
+.rgb-line span{flex:1}
+
+.container{width:100%;max-width:520px;padding:40px 24px 80px}
+
+h1{font-size:1.75rem;font-weight:900;letter-spacing:-0.03em;line-height:1.1;margin-bottom:8px;text-align:center}
+.subtitle{color:var(--text-muted);font-size:0.95rem;text-align:center;margin-bottom:36px}
+
+.section{margin-bottom:32px}
+.section-label{font-size:0.8rem;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;color:var(--accent);margin-bottom:10px}
+.field-error input,.field-error textarea{border-color:var(--red)!important}
+.validation-msg{color:var(--red);font-size:0.8rem;margin-top:4px;display:none}
+
+.chip-grid{display:flex;flex-wrap:wrap;gap:8px}
+.chip{display:flex;align-items:center;gap:8px;background:var(--surface-2);border:2px solid rgba(255,255,255,0.08);border-radius:100px;padding:10px 18px;cursor:pointer;transition:all .15s;font-size:0.9rem;font-weight:600;user-select:none;-webkit-user-select:none}
+.chip:hover{border-color:rgba(255,255,255,0.2)}
+.chip.selected{border-color:var(--accent);background:var(--accent);color:#000;font-weight:800}
+
+.upload-zone{border:2px dashed rgba(255,255,255,0.12);border-radius:12px;padding:28px;text-align:center;cursor:pointer;transition:all .2s}
+.upload-zone:hover{border-color:var(--accent);background:rgba(248,189,42,0.03)}
+.upload-zone .icon{font-size:1.5rem;margin-bottom:4px}
+.upload-zone p{color:var(--text-muted);font-size:0.85rem}
+.upload-zone small{color:rgba(255,255,255,0.3);font-size:0.75rem}
+.upload-zone input{display:none}
+.preview-grid{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.preview-item{position:relative}
+.preview-item img{width:72px;height:72px;object-fit:cover;border-radius:6px}
+.preview-item .remove{position:absolute;top:-6px;right:-6px;width:20px;height:20px;background:var(--red);color:#fff;border:none;border-radius:50%;font-size:0.7rem;cursor:pointer;display:flex;align-items:center;justify-content:center;font-weight:900}
+
+.input-row{display:flex;gap:12px;margin-bottom:12px}
+.field{flex:1}
+.field label{display:block;font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:0.04em;color:var(--text-muted);margin-bottom:4px}
+.field input{width:100%;background:var(--surface-2);border:2px solid rgba(255,255,255,0.08);border-radius:8px;padding:14px 16px;color:var(--text);font-family:inherit;font-size:1rem;outline:none;transition:border-color .2s}
+.field input:focus{border-color:var(--accent)}
+textarea{width:100%;background:var(--surface-2);border:2px solid rgba(255,255,255,0.08);border-radius:8px;padding:14px 16px;color:var(--text);font-family:inherit;font-size:1rem;outline:none;transition:border-color .2s;resize:vertical;min-height:70px}
+textarea:focus{border-color:var(--accent)}
+
+.btn-submit{width:100%;display:flex;align-items:center;justify-content:center;gap:8px;background:var(--accent);color:#000;font-weight:800;font-size:1.1rem;padding:18px;border:none;border-radius:10px;cursor:pointer;transition:transform .15s,box-shadow .2s;margin-top:8px}
+.btn-submit:hover{transform:scale(1.02);box-shadow:0 0 30px rgba(248,189,42,0.3)}
+.btn-submit:disabled{opacity:0.4;cursor:not-allowed;transform:none;box-shadow:none}
+.btn-submit svg{width:20px;height:20px}
+.btn-submit.sending{opacity:0.6;pointer-events:none}
+
+.success-overlay{display:none;position:fixed;inset:0;background:var(--bg);z-index:100;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:24px;animation:fadeIn .3s ease}
+.success-overlay.show{display:flex}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+.success-check{width:64px;height:64px;border-radius:50%;background:var(--green);display:flex;align-items:center;justify-content:center;font-size:1.5rem;color:#000;font-weight:900;margin-bottom:20px}
+.success-overlay h1{color:var(--green);margin-bottom:8px}
+.success-overlay .subtitle{margin-bottom:24px}
+.call-btn{display:inline-flex;align-items:center;gap:8px;background:var(--accent);color:#000;font-weight:800;padding:14px 32px;border-radius:8px;text-decoration:none;font-size:1rem}
+
+.error-msg{color:var(--red);font-size:0.85rem;text-align:center;margin-top:12px;display:none}
+</style>
+</head>
+<body>
+
+<header>
+  <a href="https://www.ledoutletusa.com"><img src="https://www.ledoutletusa.com/images/logo.svg" alt="LED Outlet" class="logo"/></a>
+</header>
+
+<div class="rgb-line">
+  <span style="background:var(--red)"></span>
+  <span style="background:var(--green)"></span>
+  <span style="background:var(--blue)"></span>
+</div>
+
+<div class="container">
+  <h1>Get a Quote</h1>
+  <p class="subtitle">We know life without light is tough. Fill out what you can — we'll reach out ASAP.</p>
+
+  <form id="quoteForm" onsubmit="return handleSubmit(event)">
+
+    <!-- Services -->
+    <div class="section">
+      <div class="section-label">What do you need?</div>
+      <div class="chip-grid">
+        <div class="chip" onclick="toggleChip(this)" data-value="Sign Work">Sign Work</div>
+        <div class="chip" onclick="toggleChip(this)" data-value="Parking Lot Lights">Parking Lot</div>
+        <div class="chip" onclick="toggleChip(this)" data-value="Wall Packs">Wall Packs</div>
+        <div class="chip" onclick="toggleChip(this)" data-value="Flood Lights">Flood Lights</div>
+        <div class="chip" onclick="toggleChip(this)" data-value="High Bays">High Bays</div>
+        <div class="chip" onclick="toggleChip(this)" data-value="Storefront LEDs">Storefront</div>
+        <div class="chip" onclick="toggleChip(this); toggleOther()" data-value="Other">Other</div>
+      </div>
+      <input type="text" id="otherInput" placeholder="What do you need?" style="display:none;width:100%;background:var(--surface-2);border:2px solid rgba(255,255,255,0.08);border-radius:8px;padding:14px 16px;color:var(--text);font-family:inherit;font-size:1rem;outline:none;margin-top:10px;transition:border-color .2s" onfocus="this.style.borderColor='var(--accent)'" onblur="this.style.borderColor='rgba(255,255,255,0.08)'"/>
+    </div>
+
+    <!-- Photos -->
+    <div class="section">
+      <div class="section-label">Do you have photos of the job?</div>
+      <div class="chip-grid">
+        <div class="chip" onclick="toggleChip(this)" data-value="has_photos">Yes, I can share when you reach out</div>
+        <div class="chip" onclick="toggleChip(this)" data-value="no_photos">No</div>
+      </div>
+    </div>
+
+    <!-- Notes -->
+    <div class="section">
+      <div class="section-label">Details <span style="color:rgba(255,255,255,0.3)">(the more detail, the better we can help)</span></div>
+      <textarea id="notes" placeholder="Property type, number of lights, anything that helps us quote you..." required minlength="10"></textarea>
+      <p class="field-hint" id="notesHint" style="display:none;color:var(--red);font-size:0.8rem;margin-top:4px;">Please provide at least a few words about your project.</p>
+    </div>
+
+    <!-- Contact -->
+    <div class="section">
+      <div class="section-label">Your Info</div>
+      <div class="input-row">
+        <div class="field">
+          <label for="name">Name</label>
+          <input type="text" id="name" placeholder="Your name" autocomplete="name" required/>
+          <p class="validation-msg" id="nameError">Please enter your first and last name.</p>
+        </div>
+      </div>
+      <div class="input-row">
+        <div class="field">
+          <label for="phone">Phone</label>
+          <input type="tel" id="phone" placeholder="(555) 555-5555" autocomplete="tel" required/>
+          <p class="validation-msg" id="phoneError">Please enter a valid 10-digit phone number.</p>
+        </div>
+        <div class="field">
+          <label for="email">Email</label>
+          <input type="email" id="email" placeholder="you@email.com" autocomplete="email"/>
+          <p class="validation-msg" id="emailError">Please enter a valid email address.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Honeypot (anti-spam, hidden from humans) -->
+    <div style="position:absolute;left:-9999px" aria-hidden="true">
+      <label for="website">Website</label>
+      <input type="text" id="website" name="website" tabindex="-1" autocomplete="off"/>
+    </div>
+
+    <!-- reCAPTCHA -->
+    <div class="section" style="display:flex;justify-content:center;">
+      <div class="g-recaptcha" data-sitekey="YOUR_RECAPTCHA_SITE_KEY" data-theme="dark" data-callback="onCaptchaSuccess"></div>
+    </div>
+    <p class="validation-msg" id="captchaError" style="text-align:center;">Please verify you are human.</p>
+
+    <!-- Submit -->
+    <button type="submit" class="btn-submit" id="submitBtn" disabled>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+      Send Quote Request
+    </button>
+    <p class="error-msg" id="errorMsg">Something went wrong. Please try again or call us.</p>
+  </form>
+</div>
+
+<!-- Success -->
+<div class="success-overlay" id="successOverlay">
+  <div class="success-check">✓</div>
+  <h1>Got It!</h1>
+  <p class="subtitle">We'll reach out shortly. Need us sooner?</p>
+  <a href="tel:4072338888" class="call-btn">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24 11.36 11.36 0 003.58.57 1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1 11.36 11.36 0 00.57 3.58 1 1 0 01-.25 1.01l-2.2 2.2z"/></svg>
+    Call (407) 233-8888
+  </a>
+</div>
+
+<!-- Firebase -->
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-app.js";
+import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-firestore.js";
+
+const app = initializeApp({
+  apiKey: "AIzaSyDAXcJQ71Jzy99GVKacoeB4RLGq913EHK8",
+  authDomain: "ledoutlet-2efb6.firebaseapp.com",
+  projectId: "ledoutlet-2efb6",
+  storageBucket: "ledoutlet-2efb6.firebasestorage.app",
+  messagingSenderId: "926059277632",
+  appId: "1:926059277632:web:845852b01390c7e8e1dea5"
+});
+
+const db = getFirestore(app);
+
+// Make handleSubmit available globally
+let lastSubmitTime = 0;
+
+window.handleSubmit = async function(e) {
+  e.preventDefault();
+
+  // Honeypot check — bots fill hidden fields
+  if (document.getElementById('website').value) return false;
+
+  // Validate all fields
+  if (!window.validateForm()) return false;
+
+  // Rate limit — 1 submission per 30 seconds
+  const now = Date.now();
+  if (now - lastSubmitTime < 30000) {
+    alert('Please wait before submitting again.');
+    return false;
+  }
+  lastSubmitTime = now;
+
+  const btn = document.getElementById('submitBtn');
+  const errorMsg = document.getElementById('errorMsg');
+  btn.classList.add('sending');
+  btn.innerHTML = 'Sending...';
+  errorMsg.style.display = 'none';
+
+  const services = [];
+  document.querySelectorAll('.chip.selected').forEach(chip => {
+    const val = chip.getAttribute('data-value');
+    if (val === 'Other') {
+      const otherText = document.getElementById('otherInput').value.trim();
+      services.push(otherText ? 'Other: ' + otherText : 'Other');
+    } else {
+      services.push(val);
+    }
+  });
+
+  const hasPhotos = !!document.querySelector('.chip[data-value="has_photos"].selected');
+  const notes = document.getElementById('notes').value.trim();
+
+  // Score
+  let score = 30;
+  if (services.length > 0) score += 20;
+  if (notes) score += 10;
+  if (hasPhotos) score += 40;
+
+  let grade = 'C';
+  if (score >= 80) grade = 'A+';
+  else if (score >= 50) grade = 'A';
+  else if (score >= 30) grade = 'B';
+
+  const lead = {
+    name: document.getElementById('name').value.trim(),
+    phone: document.getElementById('phone').value.trim(),
+    email: document.getElementById('email').value.trim(),
+    services,
+    notes,
+    hasPhotos,
+    score,
+    grade,
+    status: 'new',
+    createdAt: serverTimestamp()
+  };
+
+  try {
+    await addDoc(collection(db, 'leads'), lead);
+
+    // Email notification to dad + BCC Danny
+    fetch('https://formsubmit.co/ajax/ledoutletusa@gmail.com', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({
+        _subject: 'New Lead [' + grade + '] — ' + lead.name,
+        _cc: 'winwithnguyen777@gmail.com',
+        Name: lead.name,
+        Phone: lead.phone,
+        Email: lead.email || 'Not provided',
+        Services: services.join(', ') || 'None selected',
+        'Has Photos': hasPhotos ? 'Yes — ask for them' : 'No',
+        Details: notes || 'None',
+        'Lead Grade': grade + ' (' + score + '/100)'
+      })
+    }).catch(() => {}); // Don't block on email failure
+
+    document.getElementById('successOverlay').classList.add('show');
+  } catch (err) {
+    console.error('Failed to save lead:', err);
+    errorMsg.style.display = 'block';
+    btn.classList.remove('sending');
+    btn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg> Send Quote Request';
+  }
+
+  return false;
+};
+</script>
+
+<script>
+// Profanity filter
+const blockedWords = ['fuck','shit','damn','ass','bitch','dick','crap','hell','bastard','cunt','piss','slut','whore'];
+function hasProfanity(text) {
+  const lower = text.toLowerCase();
+  return blockedWords.some(w => lower.includes(w));
+}
+
+// Name validation — at least two words, letters/spaces/hyphens only
+function isValidName(name) {
+  const cleaned = name.trim();
+  if (cleaned.length < 3) return false;
+  if (!/^[a-zA-Z\s\-'\.]+$/.test(cleaned)) return false;
+  if (cleaned.split(/\s+/).length < 2) return false;
+  return true;
+}
+
+// Phone validation — 10 digits
+function isValidPhone(phone) {
+  const digits = phone.replace(/\D/g, '');
+  return digits.length === 10;
+}
+
+// Email validation
+function isValidEmail(email) {
+  if (!email) return true; // optional field
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+}
+
+// Auto-format phone
+document.getElementById('phone').addEventListener('input', function(e) {
+  let digits = this.value.replace(/\D/g, '').slice(0, 10);
+  if (digits.length >= 6) {
+    this.value = '(' + digits.slice(0,3) + ') ' + digits.slice(3,6) + '-' + digits.slice(6);
+  } else if (digits.length >= 3) {
+    this.value = '(' + digits.slice(0,3) + ') ' + digits.slice(3);
+  } else {
+    this.value = digits;
+  }
+  checkRequired();
+});
+
+// reCAPTCHA callback
+let captchaPassed = false;
+window.onCaptchaSuccess = function() {
+  captchaPassed = true;
+  document.getElementById('captchaError').style.display = 'none';
+  checkRequired();
+};
+
+// Check all required fields
+document.querySelectorAll('#name, #phone, #email, #notes').forEach(input => {
+  input.addEventListener('input', checkRequired);
+});
+
+function checkRequired() {
+  const name = document.getElementById('name').value.trim();
+  const phone = document.getElementById('phone').value.trim();
+  const notes = document.getElementById('notes').value.trim();
+  const digits = phone.replace(/\D/g, '');
+  document.getElementById('submitBtn').disabled = !(name && digits.length === 10 && notes.length >= 10 && captchaPassed);
+}
+
+// Validate on submit (inside handleSubmit)
+window.validateForm = function() {
+  let valid = true;
+
+  // Reset
+  document.querySelectorAll('.validation-msg').forEach(el => el.style.display = 'none');
+  document.querySelectorAll('.field-error').forEach(el => el.classList.remove('field-error'));
+
+  const name = document.getElementById('name').value.trim();
+  if (!isValidName(name)) {
+    document.getElementById('nameError').style.display = 'block';
+    document.getElementById('name').parentElement.classList.add('field-error');
+    valid = false;
+  }
+
+  const phone = document.getElementById('phone').value.trim();
+  if (!isValidPhone(phone)) {
+    document.getElementById('phoneError').style.display = 'block';
+    document.getElementById('phone').parentElement.classList.add('field-error');
+    valid = false;
+  }
+
+  const email = document.getElementById('email').value.trim();
+  if (!isValidEmail(email)) {
+    document.getElementById('emailError').style.display = 'block';
+    document.getElementById('email').parentElement.classList.add('field-error');
+    valid = false;
+  }
+
+  const notes = document.getElementById('notes').value.trim();
+  if (notes.length < 10) {
+    document.getElementById('notesHint').style.display = 'block';
+    valid = false;
+  }
+
+  if (hasProfanity(notes) || hasProfanity(name)) {
+    document.getElementById('notesHint').textContent = 'Please keep it professional.';
+    document.getElementById('notesHint').style.display = 'block';
+    valid = false;
+  }
+
+  if (!captchaPassed) {
+    document.getElementById('captchaError').style.display = 'block';
+    valid = false;
+  }
+
+  return valid;
+};
+
+function toggleChip(el) {
+  el.classList.toggle('selected');
+}
+
+function toggleOther() {
+  const otherChip = document.querySelector('.chip[data-value="Other"]');
+  const otherInput = document.getElementById('otherInput');
+  if (otherChip.classList.contains('selected')) {
+    otherInput.style.display = 'block';
+    otherInput.focus();
+  } else {
+    otherInput.style.display = 'none';
+    otherInput.value = '';
+  }
+}
+</script>
+</body>
+</html>
