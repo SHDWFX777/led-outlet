@@ -149,11 +149,8 @@ textarea:focus{border-color:var(--accent)}
       <input type="text" id="website" name="website" tabindex="-1" autocomplete="off"/>
     </div>
 
-    <!-- reCAPTCHA -->
-    <div class="section" style="display:flex;justify-content:center;">
-      <div class="g-recaptcha" data-sitekey="YOUR_RECAPTCHA_SITE_KEY" data-theme="dark" data-callback="onCaptchaSuccess"></div>
-    </div>
-    <p class="validation-msg" id="captchaError" style="text-align:center;">Please verify you are human.</p>
+    <!-- reCAPTCHA (invisible) -->
+    <div class="g-recaptcha" data-sitekey="6LdmUZYsAAAAALIFXYRukuEvO8OkIbNd9JqvueWF" data-size="invisible" data-callback="onCaptchaSuccess"></div>
 
     <!-- Submit -->
     <button type="submit" class="btn-submit" id="submitBtn" disabled>
@@ -202,6 +199,12 @@ window.handleSubmit = async function(e) {
 
   // Validate all fields
   if (!window.validateForm()) return false;
+
+  // Trigger invisible reCAPTCHA if not yet passed
+  if (!captchaPassed) {
+    grecaptcha.execute();
+    return false;
+  }
 
   // Rate limit — 1 submission per 30 seconds
   const now = Date.now();
@@ -333,8 +336,7 @@ document.getElementById('phone').addEventListener('input', function(e) {
 let captchaPassed = false;
 window.onCaptchaSuccess = function() {
   captchaPassed = true;
-  document.getElementById('captchaError').style.display = 'none';
-  checkRequired();
+  document.getElementById('quoteForm').requestSubmit();
 };
 
 // Check all required fields
@@ -347,7 +349,7 @@ function checkRequired() {
   const phone = document.getElementById('phone').value.trim();
   const notes = document.getElementById('notes').value.trim();
   const digits = phone.replace(/\D/g, '');
-  document.getElementById('submitBtn').disabled = !(name && digits.length === 10 && notes.length >= 10 && captchaPassed);
+  document.getElementById('submitBtn').disabled = !(name && digits.length === 10 && notes.length >= 10);
 }
 
 // Validate on submit (inside handleSubmit)
@@ -388,11 +390,6 @@ window.validateForm = function() {
   if (hasProfanity(notes) || hasProfanity(name)) {
     document.getElementById('notesHint').textContent = 'Please keep it professional.';
     document.getElementById('notesHint').style.display = 'block';
-    valid = false;
-  }
-
-  if (!captchaPassed) {
-    document.getElementById('captchaError').style.display = 'block';
     valid = false;
   }
 
