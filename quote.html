@@ -114,15 +114,6 @@ textarea:focus{border-color:var(--accent)}
       <input type="text" id="otherInput" placeholder="What do you need?" style="display:none;width:100%;background:var(--surface-2);border:2px solid rgba(255,255,255,0.08);border-radius:8px;padding:14px 16px;color:var(--text);font-family:inherit;font-size:1rem;outline:none;margin-top:10px;transition:border-color .2s" onfocus="this.style.borderColor='var(--accent)'" onblur="this.style.borderColor='rgba(255,255,255,0.08)'"/>
     </div>
 
-    <!-- Photos -->
-    <div class="section">
-      <div class="section-label">Do you have photos of the job?</div>
-      <div class="chip-grid">
-        <div class="chip" onclick="toggleChip(this)" data-value="has_photos">Yes, I can share when you reach out</div>
-        <div class="chip" onclick="toggleChip(this)" data-value="no_photos">No</div>
-      </div>
-    </div>
-
     <!-- Notes -->
     <div class="section">
       <div class="section-label">Details <span style="color:rgba(255,255,255,0.3)">(the more detail, the better we can help)</span></div>
@@ -242,14 +233,14 @@ window.handleSubmit = async function(e) {
     }
   });
 
-  const hasPhotos = !!document.querySelector('.chip[data-value="has_photos"].selected');
   const notes = document.getElementById('notes').value.trim();
 
   // Score
   let score = 30;
   if (services.length > 0) score += 20;
-  if (notes) score += 10;
-  if (hasPhotos) score += 40;
+  if (notes.length >= 10) score += 10;
+  if (notes.length >= 100) score += 20;
+  if (services.length >= 2) score += 10;
 
   let grade = 'C';
   if (score >= 80) grade = 'A+';
@@ -262,7 +253,6 @@ window.handleSubmit = async function(e) {
     email: document.getElementById('email').value.trim(),
     services,
     notes,
-    hasPhotos,
     score,
     grade,
     status: 'new',
@@ -283,7 +273,6 @@ window.handleSubmit = async function(e) {
         Phone: lead.phone,
         Email: lead.email || 'Not provided',
         Services: services.join(', ') || 'None selected',
-        'Has Photos': hasPhotos ? 'Yes — ask for them' : 'No',
         Details: notes || 'None',
         'Lead Grade': grade + ' (' + score + '/100)'
       })
